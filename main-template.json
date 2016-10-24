@@ -5,6 +5,7 @@
 
     "prefix": {
       "type": "string",
+      "defaultValue": "cvg",
       "metadata": {
         "description": "Prefix that will be added to all the artefact names"
       }
@@ -12,6 +13,7 @@
 
     "adminPassword": {
       "type": "securestring",
+      "defaultValue": "adminuser@123",
       "metadata": {
         "description": "Password to use for the administration account on each machine"
       }
@@ -19,7 +21,7 @@
 
     "customImageStorageAccountName": {
       "type": "string",
-      "defaultValue": "3e31a222bfd6c",
+      "defaultValue": "chefimages",
       "metadata": {
         "description": "Name of the storage account that holds the custom images"
       }
@@ -27,7 +29,7 @@
 
     "customImageContainerName": {
       "type": "string",
-      "defaultValue": "system",
+      "defaultValue": "system1",
       "metadata": {
         "description": "Name of the container in which the custom images are held"
       }
@@ -259,7 +261,7 @@
             "name": "[concat(uniqueString(resourceGroup().id), variables('names').disks.os.chef)]",
             "createOption": "FromImage",
             "image": {
-              "uri": "https://3e31a222bfd6c.blob.core.windows.net/system/Microsoft.Compute/Images/images/chefserver-osDisk.eb8b7633-6b12-4fdf-824f-c2f77308745b.vhd"
+              "uri": "https://chefimages.blob.core.windows.net/system1/chefserver-osDisk.eb8b7633-6b12-4fdf-824f-c2f77308745b.vhd"
            },
             "vhd": {
               "uri": "[concat('http://', variables('storage').name, '.blob.core.windows.net/', variables('storage').container, '/', variables('names').disks.os.chef, uniqueString(resourceGroup().id),'.vhd')]"
@@ -367,7 +369,7 @@
             "name": "[variables('names').disks.os.compliance]",
             "createOption": "FromImage",
             "image": {
-              "uri": "https://3e31a222bfd6c.blob.core.windows.net/system/Microsoft.Compute/Images/images/complianceserver-osDisk.63627737-4a25-4891-8b8d-233c416817da.vhd"			  
+              "uri": "https://chefimages.blob.core.windows.net/system1/complianceserver-osDisk.63627737-4a25-4891-8b8d-233c416817da.vhd"			  
             },
             "vhd": {
               "uri": "[concat('http://', variables('storage').name, '.blob.core.windows.net/', variables('storage').container, '/', variables('names').disks.os.compliance, uniqueString(resourceGroup().id), '.vhd')]"
